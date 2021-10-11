@@ -2,3 +2,4 @@
 .DS_Store
 .lift/
 Graph.class
+*.class
