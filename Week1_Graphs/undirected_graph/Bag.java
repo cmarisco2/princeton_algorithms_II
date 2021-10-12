@@ -9,7 +9,7 @@ import java.util.Iterator;
  *
  * Create a Queue API for use in Graphs
  *****************************************************************************/
-public class Queue<Item> implements Iterable<Item> {
+public class Bag<Item> implements Iterable<Item> {
     private Node head;
     private Node tail;
 
@@ -22,7 +22,7 @@ public class Queue<Item> implements Iterable<Item> {
         return head == null;
     }
 
-    public void enqueue(Item item) {
+    public void add(Item item) {
         Node temp = new Node();
         temp.item = item;
         if (head == null) {
@@ -32,18 +32,6 @@ public class Queue<Item> implements Iterable<Item> {
             tail.next = temp;
             tail = tail.next;
         }
-    }
-
-    public Item deQueue() {
-        if (head == null) throw new IllegalArgumentException("Cannot DeQueue an Empty Queue");
-        Item item = head.item;
-        if (head.next != null) {
-            head = head.next;
-            return item;
-        }
-        head = null;
-        tail = null;
-        return item;
     }
 
     public Iterator<Item> iterator() {
@@ -67,10 +55,10 @@ public class Queue<Item> implements Iterable<Item> {
     public static void main(String[] args) {
         String[] list = {"Today not Tomorrow", "The Weather is abysmal", "Dawn is nigh", "Who keeps the watch?"};
 //        LinkedStringQueue queue = new LinkedStringQueue();
-        Queue<String> queue = new Queue<>();
+        Bag<String> bag = new Bag<>();
         for (String s : list)
-            queue.enqueue(s);
-        for (String s : queue)
+            bag.add(s);
+        for (String s : bag)
             StdOut.println("The Next Element: " + s);
     }
 }
