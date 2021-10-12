@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
 
 /* *****************************************************************************
  *  Name:              Christopher Marisco
@@ -63,6 +64,10 @@ public class Graph {
         return s;
     }
 
+    public static void main(String[] args){
+        Graph G = new Graph(new In(args[0]));
+        StdOut.println(G);
+    }
 
 
 
