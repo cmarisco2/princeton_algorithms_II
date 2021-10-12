@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.In;
+
 /* *****************************************************************************
  *  Name:              Christopher Marisco
  *  Coursera User ID:  uuidV4()
@@ -20,6 +22,18 @@ public class Graph {
         for(int v = 0; v < this.V; v++)
             adj[v] = new Bag<Integer>();
     }
+
+    public Graph(In in) {
+        this(in.readInt());
+        int E = in.readInt();
+        for (int i = 0; i < E; i++) {  // Add an edge.
+            int v = in.readInt();
+            int w = in.readInt();
+            addEdge(v, w);
+        }
+    }
+
+
     public void addEdge(int v, int w){
         adj[v].add(w);
         adj[w].add(v);
