@@ -16,6 +16,9 @@
  * Gives an Iterable Object back for displaying a path from a vertex, v, to s, if it exists.
  *****************************************************************************/
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 public class DepthFirstPath {
     private boolean[] marked;
     private int[] edgeTo;
@@ -40,6 +43,27 @@ public class DepthFirstPath {
 
     public boolean hasPathTo(int v){
         return marked[v];
+    }
+
+    public Iterable<Integer> pathTo(int v){
+        if(!hasPathTo(v)) return null;
+        Stack<Integer> path = new Stack<>();
+        for(int x = v; x != s; x = edgeTo[x])
+            path.push(x);
+        path.push(s);
+        return path;
+    }
+
+    public static void main(String[] args){
+        Graph g = new Graph(new In(args[0]));
+        int vertex = 0;
+        DepthFirstPath path = new DepthFirstPath(g, vertex);
+
+        StdOut.println("Connections of Graph Along Vertex are: ");
+        for(int w: path.pathTo(3)){
+            StdOut.print(w + "-");
+        }
+        StdOut.println();
     }
 
 }
