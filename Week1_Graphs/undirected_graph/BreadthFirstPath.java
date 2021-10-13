@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 /* *****************************************************************************
  *  Name:              Christopher Marisco
  *  Coursera User ID:  uuidV4()
@@ -42,6 +45,39 @@ public class BreadthFirstPath {
                     queue.enqueue(w);
                 }
             }
+        }
+    }
+
+    public boolean hasPathTo(int v){
+        return marked[v];
+    }
+
+    public Iterable<Integer> pathTo(int v){
+        if(!hasPathTo(v)) return null;
+        Stack<Integer> path = new Stack<>();
+        for(int x = v; x != s; x = edgeTo[x])
+            path.push(x);
+        path.push(s);
+        return path;
+    }
+
+    public static void main(String[] args){
+        Graph g = new Graph(new In(args[0]));
+        StdOut.println("Given Graph: ");
+        StdOut.println(g);
+        int vertex = 0;
+        BreadthFirstPath path = new BreadthFirstPath(g, vertex);
+
+        StdOut.println("A Shortest Path to Each Vertex Starting from Vertex " + vertex + " are:");
+
+        for(int v = 0; v < g.V(); v++){
+            for(int w: path.pathTo(v)){
+                if(w == v)
+                    StdOut.print(w);
+                else
+                    StdOut.print(w + "-");
+            }
+            StdOut.println();
         }
     }
 }
