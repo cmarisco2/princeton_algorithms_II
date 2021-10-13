@@ -57,10 +57,12 @@ public class DepthFirstPath {
     public static void main(String[] args){
 
         Graph g = new Graph(new In(args[0]));
+        StdOut.println("Given Graph Adjacency List: ");
+        StdOut.println(g);
         int vertex = 0;
         DepthFirstPath path = new DepthFirstPath(g, vertex);
 
-        StdOut.println("Connections of Graph Along Vertex are: ");
+        StdOut.println("Connections of Graph Along Vertices are: ");
 
         for(int v = 0; v < g.V(); v++){
             for(int w: path.pathTo(v)){
