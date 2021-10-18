@@ -6,7 +6,6 @@
  * ConnectedComponents Class
  *
  * Utilizes Serial DFS to find connected components in a Graph.
- *
  *****************************************************************************/
 public class CC {
     boolean[] marked;
@@ -18,9 +17,12 @@ public class CC {
         id = new int[G.V()];
         count = 0;
         for(int s = 0; s < G.V(); s++){
+//            If Not marked -> then it's a separate component. Loop will only continue for those
             if(!marked[s]){
                 dfs(G,s);
-                count++; //On The Way Up.
+//                On The Way Up
+//                Next portion happens after recursive calls -> after DFS has connected Each component available.
+                count++;
             }
         }
     }
