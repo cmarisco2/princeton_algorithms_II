@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.In;
+
 /* *****************************************************************************
  *  Name:              Christopher Marisco
  *  Coursera User ID:  uuidV4()
@@ -22,6 +24,18 @@ public class EdgeWeightedGraph {
         adj = (Bag<Edge>[]) new Bag[V];
         for(int v = 0; v < this.V; v++)
             adj[v] = new Bag<Edge>();
+    }
+
+    public EdgeWeightedGraph(In in) {
+        this(in.readInt());
+        int E = in.readInt();
+        for (int i = 0; i < E; i++) {  // Add an edge.
+            int v = in.readInt();
+            int w = in.readInt();
+            double weight = in.readDouble();
+            Edge e = new Edge(v,w,weight);
+            addEdge(e);
+        }
     }
 
     public int V(){
