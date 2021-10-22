@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
 
 /* *****************************************************************************
  *  Name:              Christopher Marisco
@@ -63,5 +64,28 @@ public class EdgeWeightedGraph {
             for(Edge e : adj[v])
                 if(e.other(v) > v) b.add(e);
         return b;
+    }
+    public String toString(){
+        String s = this.V + " vertices, " + this.E + " edges\n";
+//        for (int v = 0; v < this.V; v++)
+//        {
+//            s += v + ": ";
+//            for (int w : this.adj(v))
+//                s += w + " ";
+//            s += "\n";
+//        }
+//        return s;
+        for(int v = 0; v < this.V; v++){
+            s+= v + ": ";
+            for(Edge e: this.adj(v))
+                s+= e + " ";
+            s+= "\n";
+        }
+        return s;
+    }
+
+    public static void main(String[] args){
+        EdgeWeightedGraph G = new EdgeWeightedGraph(new In(args[0]));
+        StdOut.println(G);
     }
 }
