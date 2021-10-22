@@ -8,6 +8,7 @@ import java.util.Iterator;
 public class Queue<Item> implements Iterable<Item> {
     private Node head;
     private Node tail;
+    private int size = 0;
 
     private class Node {
         Item item;
@@ -16,6 +17,10 @@ public class Queue<Item> implements Iterable<Item> {
 
     public boolean isEmpty() {
         return head == null;
+    }
+
+    public int size(){
+        return this.size;
     }
 
     public void enqueue(Item item) {
@@ -29,6 +34,7 @@ public class Queue<Item> implements Iterable<Item> {
             tail.next = temp;
             tail = tail.next;
         }
+        size++;
     }
 
     public Item deQueue() {
@@ -36,10 +42,12 @@ public class Queue<Item> implements Iterable<Item> {
         Item item = head.item;
         if (head.next != null) {
             head = head.next;
+            size--;
             return item;
         }
         head = null;
         tail = null;
+        size--;
         return item;
     }
 
