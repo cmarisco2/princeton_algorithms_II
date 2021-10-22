@@ -47,4 +47,10 @@ public class KruskalMST {
     public double weight(){
         return this.minWeight;
     }
+    public String toString(){
+        String s = "Minimum Spanning Tree Weight: " + this.minWeight + "\n" + ("Minimum Spanning Tree Edges are: " + "\n");
+        for(Edge e : mst)
+            s+= e + "  " + "\n";
+        return s;
+    }
 }
