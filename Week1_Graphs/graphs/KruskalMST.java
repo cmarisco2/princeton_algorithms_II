@@ -7,10 +7,10 @@
  *
  * Processing Paradigm for the Undirected Edge-Weighted Graph Class:
  *
- * Utilizes Greedy MST Algorithm to find a Tree, T that is minimum spanning.
- * -It is the minimum weight
- * -It is a tree, T (connected and acyclic).
- * -It spans every vertex in given Graph, G.
+ * Utilizes Greedy MST Algorithm to find a Tree, T, that is minimum spanning.
+ * -T is a tree (connected and acyclic).
+ * -Tree T is a minimum weight tree
+ * -T spans every vertex in given Graph, G.
  *
  *****************************************************************************/
 public class KruskalMST {
