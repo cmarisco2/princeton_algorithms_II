@@ -87,7 +87,8 @@ public class EdgeWeightedGraph {
     public static void main(String[] args){
         EdgeWeightedGraph G = new EdgeWeightedGraph(new In(args[0]));
         StdOut.println(G);
-        KruskalMST MinSpanTree = new KruskalMST(G);
+//        KruskalMST MinSpanTree = new KruskalMST(G);
+        LazyPrimMST MinSpanTree = new LazyPrimMST(G);
         StdOut.println(MinSpanTree);
     }
 }
