@@ -6,6 +6,8 @@
  * Create Directed Edge Class for Edge Weighted Digraphs.
  * Have int v, and int w for vertices.
  * Have double weight for the edge's weight
+ *
+ * Uses to() and from() vice either() and other(int v)
  *****************************************************************************/
 public class DirectedEdge {
     private final int v;
