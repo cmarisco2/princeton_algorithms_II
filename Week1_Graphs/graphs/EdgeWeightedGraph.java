@@ -67,14 +67,6 @@ public class EdgeWeightedGraph {
     }
     public String toString(){
         String s = this.V + " vertices, " + this.E + " edges\n";
-//        for (int v = 0; v < this.V; v++)
-//        {
-//            s += v + ": ";
-//            for (int w : this.adj(v))
-//                s += w + " ";
-//            s += "\n";
-//        }
-//        return s;
         for(int v = 0; v < this.V; v++){
             s+= v + ": ";
             for(Edge e: this.adj(v))
