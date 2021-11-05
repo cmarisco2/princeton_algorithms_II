@@ -17,12 +17,16 @@ public class DijkstraSP {
     private Double[] distTo;
     private IndexMinPQ<Double> pq;
 
-    public DijkstraSP(EdgeWeightedDigraph G, int S){
+    public DijkstraSP(EdgeWeightedDigraph G, int s){
         edgeTo = new DirectedEdge[G.V()];
         distTo = new Double[G.V()];
         pq = new IndexMinPQ<>(G.V());
 
-        pq.insert(S, 0.0);
+        for(int i = 0; i < G.V(); i++)
+            distTo[i] = Double.POSITIVE_INFINITY;
+        distTo[s] = 0.0;
+
+        pq.insert(s, 0.0);
         while(!pq.isEmpty()){
             int v = pq.delMin();
             for(DirectedEdge e: G.adj(v))
@@ -39,5 +43,21 @@ public class DijkstraSP {
             if(pq.contains(w)) pq.decreaseKey(w, distTo[w]);
             else pq.insert(w, distTo[w]);
         }
+    }
+
+    public double distTo(int v){
+        return distTo[v];
+    }
+
+    public boolean hasPathTo(int v){
+        return distTo[v] < Double.POSITIVE_INFINITY;
+    }
+
+    public Iterable<DirectedEdge> pathTo(int v){
+        if(!hasPathTo(v)) return null;
+        Stack<DirectedEdge> path = new Stack<>();
+        for(DirectedEdge x = edgeTo[v]; x != null; x = edgeTo[x.from()])
+            path.push(x);
+        return path;
     }
 }
