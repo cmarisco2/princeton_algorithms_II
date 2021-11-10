@@ -1,3 +1,4 @@
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 /* *****************************************************************************
@@ -52,6 +53,16 @@ public class LSD {
     }
 
     public static void main(String[] args){
-        StdOut.println("Test");
+        In in = new In(args[0]);
+        int fixedStringLength = in.readInt();
+        String [] input = in.readAllStrings();
+        StdOut.println("Fixed String Length " + fixedStringLength);
+        for(String s: input)
+            StdOut.println(s);
+        StdOut.println();
+        sort(input, fixedStringLength);
+        StdOut.println("Sorted License Plates:");
+        for(String s: input)
+            StdOut.println(s);
     }
 }
