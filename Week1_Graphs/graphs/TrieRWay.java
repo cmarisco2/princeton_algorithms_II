@@ -4,9 +4,9 @@ public class TrieRWay<Value> {
     private static final int R = 256; //extended ascii
     private Node root = new Node();
 
-    private class Node{
+    private static class Node{
         private Object val;
-        private Node[] next;
+        private Node[] next =  new Node[R];
     }
 
     public Value get(String key){
