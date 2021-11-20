@@ -1,4 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
+
+import java.util.NoSuchElementException;
+
 /* *****************************************************************************
  *  Name:              Christopher Marisco
  *  Coursera User ID:  uuidV4()
@@ -47,6 +50,29 @@ public class TrieRWay<Value> {
         return x;
     }
 
+    public void delete(String key){
+        if(!contains(key)) throw new NoSuchElementException("Key Does not exist in Trie");
+        root = delete(root, key, 0);
+    }
+
+    private Node delete(Node x, String key, int d){
+        if(x == null) return null;
+        if(d == key.length()){
+            x.val = null;
+            return null;
+        } else {
+            char c = key.charAt(d);
+            x.next[c] = delete(x.next[c], key, d + 1);
+        }
+
+        if(x.val != null) return x;
+
+        for(char c = 0; c < R; c++)
+            if(x.next[c] != null) return x;
+
+        return null;
+    }
+
     public boolean contains(String key){
         return get(key) != null;
     }
@@ -60,5 +86,10 @@ public class TrieRWay<Value> {
 
         StdOut.println("Contains Key 'Bye': " + trie.contains("Bye"));
         StdOut.println("Contains Key 'Hi': " + trie.contains("Hi"));
+        StdOut.println("Contains Key 'Earth': " + trie.contains("Earth"));
+//        trie.delete("mom");
+        trie.delete("Earth");
+        StdOut.println("Contains Key 'Earth': " + trie.contains("Earth"));
+
     }
 }
