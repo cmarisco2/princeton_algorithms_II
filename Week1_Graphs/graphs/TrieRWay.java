@@ -1,5 +1,18 @@
 import edu.princeton.cs.algs4.StdOut;
-
+/* *****************************************************************************
+ *  Name:              Christopher Marisco
+ *  Coursera User ID:  uuidV4()
+ *  Last modified:     November 20, 2021
+ *
+ * Utilizes an internal Node with an array of Node References.
+ * Each Ref is implicitly defined by the array indices via the Radix of the alphabet used.
+ *
+ * Objects used as values in Node class b/c Java forbids Generic Arrays.
+ * Recast as Values via the public get() method.
+ *
+ *
+ * Template for creating trees with finite potential children at each level, but not explicitly defined until needed.
+ *****************************************************************************/
 public class TrieRWay<Value> {
     private static final int R = 256; //extended ascii
     private Node root = new Node();
