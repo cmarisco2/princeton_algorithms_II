@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 /* *****************************************************************************
  *  Name:              Christopher Marisco
  *  Coursera User ID:  uuidV4()
@@ -16,6 +18,10 @@ public class TST<Value> {
         char c;
         Value val;
         Node left, right, mid;
+    }
+
+    public boolean contains(String key){
+        return get(key) != null;
     }
 
     public Value get(String key){
@@ -50,6 +56,11 @@ public class TST<Value> {
     }
 
     public static void main(String[] args){
+        TST<Integer> trie = new TST<>();
+        trie.put("Hello", 17);
+        trie.put("Goodbye", 0);
 
+        StdOut.println("Contains Key: 'Hello': " + trie.contains("Hello"));
+        StdOut.println("Value for Key: 'Hello': " + trie.get("Hello"));
     }
 }
